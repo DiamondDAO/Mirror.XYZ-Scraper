@@ -1,6 +1,6 @@
-const { findAllArweaveTxs } = require("./pipeline_parts/arweave");
-const { fetchData } = require("./pipeline_parts/fetchTransactionData");
-const { exportData } = require("./pipeline_parts/exportDataToSingleFile");
+const { findAllArweaveTxs } = require("./src/arweave");
+const { fetchData } = require("./src/fetchTransactionData");
+const { exportData } = require("./src/exportDataToSingleFile");
 
 const pipeline = async (startBlock, endBlock, pathToJSONOutput) => {
 	let tickets = await findAllArweaveTxs(startBlock, endBlock, 1000);
