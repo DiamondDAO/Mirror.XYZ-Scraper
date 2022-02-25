@@ -22,7 +22,50 @@ First the program uses the [Arweave GraphQL endpoint](https://arweave.net/graphq
 
 Then each transaction is parsed for the `Content-Digest` value, which is then used to query the [Arweave API](http://www.arweave.net) using the `http://www.arweave.net/<Content-Digest ID>` request convention.
 
-## Response data
+## GraphQL Response data
+
+An example JSON response for a single post is below. The `id` field is passed to the [Arweave](http://www.arweave.net) API to get the Mirror post metadata.
+
+```json
+{
+	"data": {
+		"transactions": {
+			"edges": [
+				 {
+				"cursor": "WyIyMDIyLTAyLTI1VDAwOjM2OjUzLjIyM1oiLDFd",
+				"node": {
+					"id": "BiSkFNbcQt5aI1Zr-I0E-DGjf-Qk44FSyJds036EiKU",
+					"tags": [
+					{
+						"name": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"name": "App-Name",
+						"value": "MirrorXYZ"
+					},
+					{
+						"name": "Contributor",
+						"value": "0x97b9958faceC9ACB7ADb2Bb72a70172CB5a0Ea7C"
+					},
+					{
+						"name": "Content-Digest",
+						"value": "sGTEiNpqL2hczBIOddOZc65nyV12kRKLkhIkyMWreuY"
+					},
+					{
+						"name": "Original-Content-Digest",
+						"value": "1ruXRuCFKY9PM7hzgVKECF9TlmXnjTTVaULpMy4iAGk"
+					}
+					]
+				}
+				}
+			]
+		}
+	}
+}
+```
+
+## Arweave API Response data
 
 The JSON response is structured like this:
 
