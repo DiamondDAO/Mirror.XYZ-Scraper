@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "follow-redirects": "^1.14.9",
+    "graphql-request": "^4.0.0",
     "languagedetect": "^2.0.0"
-  }
+  },
+  "name": "mirror.xyz-scraper",
+  "description": "## Summary This solution is built and configured to fetch all posts published on [Mirror.xyz](http://www.mirror.xyz).",
+  "version": "1.0.0",
+  "main": "runPipeline.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiamondDAO/Mirror.XYZ-Scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiamondDAO/Mirror.XYZ-Scraper/issues"
+  },
+  "homepage": "https://github.com/DiamondDAO/Mirror.XYZ-Scraper#readme"
 }
