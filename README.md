@@ -108,7 +108,7 @@ For example: `node runPipeline.js 869641 869643 test.json`
 # Additional details
 
 
-See [`./'data exploration'/tables/`](https://github.com/nathanabram/Mirror.XYZ-Scraper/tree/master/data%20exploration/tables) for some views of the data snapshot.
+See [`./analysis/tables/`](./analysis/tables) for some views of the data snapshot.
 
 In the process of gathering the data each article will be output to `./data` as a single JSON record before being pulled back into a single record at the end.
 This `./data` file can be safely deleted once the data has been generated. 
