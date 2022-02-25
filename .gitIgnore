@@ -1,8 +1,6 @@
-data.json
-/data
-/data1
-/testingData
-allMirrorData.json
+node_modules
+data/*
+
 data.csv
 testingWholePipeline.json
 omitted.json
