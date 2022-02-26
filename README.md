@@ -107,6 +107,7 @@ For example: `node runPipeline.js 869641 869643 test.json`
 
 # Additional details
 
+First Arweave block with a `Mirror-App` transaction: `592678`
 
 See [`./analysis/tables/`](./analysis/tables) for some views of the data snapshot.
 
