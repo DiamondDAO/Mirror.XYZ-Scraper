@@ -1,50 +1,56 @@
 // const fs = require("fs");
 const fs = require('fs');
+const { dirname } = require('path');
 const path = require('path');
+const { callbackify } = require('util');
 
 // const testPost = "BiSkFNbcQt5aI1Zr-I0E-DGjf-Qk44FSyJds036EiKU"
-let posts = [];
+
+const dir = "./data";
 
 // iterate through each file
-fs.readdir("./data", (err, fileList) => {
+fs.readdir(dir, (err, fileList) => {
     if (err) {
         console.error(err);
         return;
     } else {
-        console.log(fileList);
+        // let posts = [];
         // loop through each file in directory
-        for (file of fileList) {
-            if (!file.toLowerCase().endsWith(".json")) continue;
-            // start the parsing
-            let filePath = path.join("./data", file);
-            
-            // get the arweave tx from filename (remove .json extension)
-            let arweaveTx = file.split(".json")[0];
-
-            // parse the data
+        fileList.slice(19560, 19564).forEach(function(filename) {
+            // if (!filename.toLocaleLowerCase().endsWith(".json")) continue;
+            // combine the directory and filename
+            let filePath = path.join(dir, filename);
+            // extract arweave transaction from the filename
+            let arweaveTx = filename.split(".json")[0];
             fs.readFile(filePath, function(err, data) {
                 if (err) {
-                    console.log(err);
+                    console.error(err);
                 } else {
                     // parse the Mirror data and return a dictionary
                     let parsed_data = parseMirrorData(data, arweaveTx);
-                    
                     // add to list
                     posts.push(parsed_data);
+                    // console.log(posts);
                 }
-            });
-        }
+            }); // finish processing a file
+        }); // finish looping through all files
+        callback(posts);
+        // write the file
+        const outdir = "./analysis/MirrorTwitterNetwork/data/";
+        const outFile = "MirrorTwitterData.json";
+
+        fs.writeFile(outdir + outFile, JSON.stringify(posts), function(err) {
+            if(err) {
+                console.log(err);
+            } 
+            else {
+                console.log("Output saved to MirrorTwitterData.");
+                console.log()
+            }
+        }); // finish writing files
     }
-    // write the file
-    fs.writeFile("./MirrorTwitterData.json", JSON.stringify(posts), function(err) {
-        if(err) {
-            console.log(err);
-        } 
-        else {
-            console.log("Output saved to MirrorTwitterData.");
-        }
-    }); 
 });
+
 
 // returns a simplified JSON object from a Mirror post data object.
 function parseMirrorData(content, txString) {
